@@ -18,10 +18,17 @@ export class NewTweet extends Component {
     e.preventDefault();
     const { text } = this.state;
     const { dispatch, id } = this.props;
+    if (text.length > 280) {
+      alert(
+        `Your Chirp is too long.  Please remove ${
+          text.length - 280
+        } characters and try again.`
+      );
+    } else {
+      dispatch(handleAddTweet(text, id));
 
-    dispatch(handleAddTweet(text, id));
-
-    this.setState(() => ({ text: "" }));
+      this.setState(() => ({ text: "" }));
+    }
   };
 
   render() {
