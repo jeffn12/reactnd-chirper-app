@@ -6,10 +6,11 @@ import App from "./components/App";
 // Libraries
 import { createStore } from "redux";
 import { Provider } from "react-redux";
-// State Assets
+// Redux Resources
 import reducer from "./reducers";
+import middleware from "./middleware";
 
-const store = createStore(reducer);
+const store = createStore(reducer, middleware);
 
 ReactDOM.render(
   <Provider store={store}>
