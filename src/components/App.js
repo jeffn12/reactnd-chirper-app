@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 class App extends Component {
   render() {
-    return <div>Starter Code</div>;
+    return <h1>Welcome to the Chirpy App, a Twitter clone.</h1>;
   }
 }
 
