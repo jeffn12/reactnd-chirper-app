@@ -28,7 +28,7 @@ export const tweets = (state = {}, action) => {
           }
         };
       }
-      console.log("Tweet");
+
       return {
         ...state,
         [tweet.id]: tweet,
