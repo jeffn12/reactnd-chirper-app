@@ -30,7 +30,7 @@ function mapStateToProps({ authedUser, tweets, users }, props) {
   const { id } = props.match.params;
 
   return {
-    author: !users[tweets[id].author] ? null : users[tweets[id].author].name,
+    author: !users[tweets[id]] ? null : users[tweets[id].author].name,
     id,
     replies: !tweets[id]
       ? []

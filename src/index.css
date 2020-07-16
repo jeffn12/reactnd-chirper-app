@@ -47,6 +47,10 @@ a {
   font-weight: bold;
 }
 
+.nav {
+  padding-left: 10px;
+}
+
 .nav ul {
   display: flex;
   flex-direction: row;

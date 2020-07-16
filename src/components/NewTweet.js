@@ -1,10 +1,12 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { handleAddTweet } from "../actions/tweets";
+import { Redirect } from "react-router-dom";
 
 export class NewTweet extends Component {
   state = {
-    text: ""
+    text: "",
+    toHome: false
   };
 
   handleChange = (e) => {
@@ -26,8 +28,7 @@ export class NewTweet extends Component {
       );
     } else {
       dispatch(handleAddTweet(text, id));
-
-      this.setState(() => ({ text: "" }));
+      this.setState(() => ({ text: "", toHome: id ? false : true }));
     }
   };
 
@@ -35,7 +36,11 @@ export class NewTweet extends Component {
     const { text } = this.state;
     const tweetLeft = 280 - text.length;
 
-    /** TODO: redirect to home view if submitted */
+    const { toHome } = this.state;
+
+    if (toHome === true) {
+      return <Redirect to="/" />;
+    }
 
     return (
       <div>

@@ -1,10 +1,12 @@
 import React, { Component } from "react";
+import { Route } from "react-router-dom";
 import { connect } from "react-redux";
 import { handleInitialData } from "../actions/shared";
+import NavBar from "../navigation/NavBar";
 import Dashboard from "./Dashboard";
 import LoadingBar from "react-redux-loading";
 import NewTweet from "./NewTweet";
-import { Tweet } from "./Tweet";
+import Tweet from "./Tweet";
 import TweetPage from "./TweetPage";
 
 class App extends Component {
@@ -16,9 +18,13 @@ class App extends Component {
     return (
       <div>
         <LoadingBar style={{ backgroundColor: "blue", height: "5px" }} />
-        {!this.props.loading && (
-          <div>
-            <TweetPage match={{ params: { id: "2mb6re13q842wu8n106bhk" } }} />
+
+        {this.props.loading ? null : (
+          <div className="container">
+            <NavBar />
+            <Route path="/" exact component={Dashboard} />
+            <Route path="/tweet/:id" component={TweetPage} />
+            <Route path="/new" component={NewTweet} />
           </div>
         )}
       </div>
