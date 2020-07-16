@@ -5,17 +5,23 @@ import { formatTweet } from "../utils/helpers";
 
 export class Tweet extends Component {
   render() {
-    console.log(this.props);
-    return <div className="tweet">{JSON.stringify(this.props.tweet)}</div>;
+    return !this.props.tweet ? (
+      <p>This Chirp doesn't exist</p>
+    ) : (
+      <div className="tweet">{JSON.stringify(this.props.tweet)}</div>
+    );
   }
 }
 
 const mapStateToProps = ({ authedUser, users, tweets }, { id }) => {
-  const tweet = tweets[id];
+  const tweet = tweets ? tweets[id] : null;
+  const parentTweet = tweet ? tweets[tweet.replyingTo] : null;
 
   return {
     authedUser,
-    tweet: formatTweet(tweet, users[tweet.author], authedUser)
+    tweet: tweet
+      ? formatTweet(tweet, users[tweet.author], authedUser, parentTweet)
+      : null
   };
 };
 
