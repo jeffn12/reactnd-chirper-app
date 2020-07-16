@@ -6,7 +6,6 @@ import NavBar from "../navigation/NavBar";
 import Dashboard from "./Dashboard";
 import LoadingBar from "react-redux-loading";
 import NewTweet from "./NewTweet";
-import Tweet from "./Tweet";
 import TweetPage from "./TweetPage";
 
 class App extends Component {
