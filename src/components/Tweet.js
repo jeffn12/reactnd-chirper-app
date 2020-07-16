@@ -6,7 +6,7 @@ import { formatTweet } from "../utils/helpers";
 export class Tweet extends Component {
   render() {
     console.log(this.props);
-    return <div className="tweet">TWEET</div>;
+    return <div className="tweet">{JSON.stringify(this.props.tweet)}</div>;
   }
 }
 
