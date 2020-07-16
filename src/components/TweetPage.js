@@ -6,7 +6,7 @@ import NewTweet from "./NewTweet";
 class TweetPage extends Component {
   render() {
     const { id, replies, author } = this.props;
-    console.log(this.props);
+
     return (
       <div>
         <h2 className="center">
@@ -31,7 +31,7 @@ function mapStateToProps({ authedUser, tweets, users }, props) {
   const { id } = props.match.params;
 
   return {
-    author: !users[tweets[id]] ? null : users[tweets[id].author].name,
+    author: users[tweets[id]] ? null : users[tweets[id].author].name,
     id,
     replies: !tweets[id]
       ? []
