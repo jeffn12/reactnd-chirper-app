@@ -165,3 +165,9 @@ li {
 .over-length {
   color: #c3392a;
 }
+
+.tweet-page-author {
+  font-style: italic;
+  color: blue;
+  font-size: 25px;
+}

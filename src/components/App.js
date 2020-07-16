@@ -19,8 +19,6 @@ class App extends Component {
         {!this.props.loading && (
           <div>
             <TweetPage match={{ params: { id: "2mb6re13q842wu8n106bhk" } }} />
-            <NewTweet />
-            <Dashboard />
           </div>
         )}
       </div>

@@ -21,6 +21,10 @@ export class Tweet extends Component {
     );
   };
 
+  handleReply = (e) => {
+    e.preventDefault();
+  };
+
   render() {
     const { tweet } = this.props;
 
@@ -55,12 +59,12 @@ export class Tweet extends Component {
             <p>{text}</p>
           </div>
           <div className="tweet-icons">
-            <BsFillReplyFill className="tweet-icon" />
+            <BsFillReplyFill
+              className="tweet-icon"
+              onClick={this.handleReply}
+            />
             <span>{replies !== 0 && replies}</span>
-            <button
-              className="heart-button"
-              onClick={(e) => this.handleHeart(e)}
-            >
+            <button className="heart-button" onClick={this.handleHeart}>
               {hasLiked ? (
                 <BsHeartFill size={20} color="blue" className="tweet-icon" />
               ) : (
