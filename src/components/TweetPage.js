@@ -6,6 +6,7 @@ import NewTweet from "./NewTweet";
 class TweetPage extends Component {
   render() {
     const { id, replies, author } = this.props;
+    console.log(this.props);
     return (
       <div>
         <h2 className="center">

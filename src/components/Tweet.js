@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Link, withRouter, Redirect } from "react-router-dom";
+
 // API helpers
 import { formatTweet } from "../utils/helpers";
 import { formatDate } from "../utils/helpers";
@@ -10,7 +12,7 @@ import { handleToggleTweet } from "../actions/tweets";
 export class Tweet extends Component {
   toParent = (e, id) => {
     e.preventDefault();
-    // TODO: redirect to parent tweet
+    this.props.history.push(`/tweet/${id}`);
   };
 
   handleHeart = (e) => {
@@ -21,8 +23,9 @@ export class Tweet extends Component {
     );
   };
 
-  handleReply = (e) => {
+  handleReply = (e, id) => {
     e.preventDefault();
+    this.props.history.push(`/tweet/${id}`);
   };
 
   render() {
@@ -35,6 +38,7 @@ export class Tweet extends Component {
       avatar,
       timestamp,
       text,
+      id,
       likes,
       replies,
       hasLiked,
@@ -42,7 +46,7 @@ export class Tweet extends Component {
     } = tweet;
 
     return (
-      <div className="tweet">
+      <Link to={`/tweet/${id}`} className="tweet">
         <img src={avatar} alt={`Avatar of ${name}`} className="avatar" />
         <div className="tweet-info">
           <div>
@@ -61,7 +65,7 @@ export class Tweet extends Component {
           <div className="tweet-icons">
             <BsFillReplyFill
               className="tweet-icon"
-              onClick={this.handleReply}
+              onClick={(e) => this.handleReply(e, id)}
             />
             <span>{replies !== 0 && replies}</span>
             <button className="heart-button" onClick={this.handleHeart}>
@@ -74,7 +78,7 @@ export class Tweet extends Component {
             <span>{likes !== 0 && likes}</span>
           </div>
         </div>
-      </div>
+      </Link>
     );
   }
 }
@@ -91,4 +95,4 @@ const mapStateToProps = ({ authedUser, users, tweets }, { id }) => {
   };
 };
 
-export default connect(mapStateToProps)(Tweet);
+export default withRouter(connect(mapStateToProps)(Tweet));
