@@ -31,7 +31,6 @@ export class Tweet extends Component {
       avatar,
       timestamp,
       text,
-      id,
       likes,
       replies,
       hasLiked,
