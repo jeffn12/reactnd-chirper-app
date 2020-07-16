@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { handleInitialData } from "../actions/shared";
+import Dashboard from "./Dashboard";
 
 class App extends Component {
   componentDidMount = () => {
@@ -8,7 +9,11 @@ class App extends Component {
   };
 
   render() {
-    return <h1>Welcome to the Chirpy App, a Twitter clone.</h1>;
+    return (
+      <div>
+        <Dashboard />
+      </div>
+    );
   }
 }
 
